@@ -39,4 +39,6 @@ const checklists: Checklist[] = [
 const get = async (id: string): Promise<Checklist> =>
   checklists.find((checklist) => checklist.id === id) || checklists[0];
 
-export { get };
+const completeTask = async (id: string): Promise<string> => id;
+
+export { get, completeTask };

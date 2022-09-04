@@ -48,7 +48,8 @@ export const Checklist: Component<{ id: string }> = (props) => {
     setChecklist(checklist);
   });
 
-  const completeTask = (id: string) => {
+  const completeTask = async (id: string) => {
+    await api.completeTask(id);
     setChecklist('tasks', (tasks) => tasks.filter((task) => task.id !== id));
   };
 
