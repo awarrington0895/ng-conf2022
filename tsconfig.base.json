@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ngconf/checklist": ["libs/checklist/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

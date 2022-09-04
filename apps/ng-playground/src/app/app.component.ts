@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { ChecklistSwitcherComponent } from '@ngconf/checklist';
 
 @Component({
   selector: 'pg-root',
   standalone: true,
-  imports: [NxWelcomeComponent],
-  templateUrl: './app.component.html',
+  imports: [ChecklistSwitcherComponent],
+  template: ` <ngconf-checklist-switcher></ngconf-checklist-switcher> `,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
