@@ -1,3 +1,4 @@
+import Button from '@suid/material/Button';
 import { Component, createSignal } from 'solid-js';
 import { Checklist } from './Checklist';
 
@@ -11,8 +12,16 @@ export const ChecklistSwitcher: Component = () => {
   return (
     <>
       <Checklist id={counter().toString()} />
-      <button onClick={[adjust, -1]}>Previous</button>
-      <button onClick={[adjust, 1]}>Next</button>
+      <Button
+        sx={{ marginRight: '1rem', marginLeft: '0.25rem' }}
+        variant="outlined"
+        onClick={[adjust, -1]}
+      >
+        Previous
+      </Button>
+      <Button variant="outlined" onClick={[adjust, 1]}>
+        Next
+      </Button>
     </>
   );
 };
