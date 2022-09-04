@@ -4,6 +4,7 @@
   "projects": {
     "checklist": "libs/checklist",
     "ng-playground": "apps/ng-playground",
+    "solid-checklist": "libs/solid-checklist",
     "solid-pg": "apps/solid-pg"
   }
 }

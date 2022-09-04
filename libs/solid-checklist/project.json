@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/solid-checklist/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/solid-checklist/**/*.{ts,spec.ts}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/solid-checklist"],
+      "options": {
+        "jestConfig": "libs/solid-checklist/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

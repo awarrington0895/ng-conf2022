@@ -27,6 +27,7 @@ specifiers:
   '@nrwl/workspace': 14.6.4
   '@nxext/solid': ^14.0.2
   '@rx-angular/state': ^1.6.1
+  '@suid/material': ^0.6.1
   '@types/jest': 28.1.1
   '@types/node': 16.11.7
   '@typescript-eslint/eslint-plugin': ~5.33.1
@@ -68,6 +69,7 @@ dependencies:
   '@ngrx/component-store': 14.3.0_ulhd65egriw6odwvy6kqq5spge
   '@nxext/solid': 14.0.2_tii5inhuj7zz3tnf5a2tfagbce
   '@rx-angular/state': 1.6.1_5fg2gf3rwg7i2f7lxiduteicpi
+  '@suid/material': 0.6.1_solid-js@1.5.4
   rxjs: 7.5.6
   tslib: 2.4.0
   zone.js: 0.11.8
@@ -3929,6 +3931,10 @@ packages:
       webpack-dev-server: 4.10.1_webpack@5.74.0
     dev: true
 
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: false
+
   /@rollup/plugin-babel/5.3.1_qa5xd24o3tymwictiiptlhxtom:
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
     engines: {node: '>= 10.0.0'}
@@ -4069,6 +4075,83 @@ packages:
     resolution: {integrity: sha512-BPS4ynJW/o92PUR4wgriz2Ud5gpST5vz6GQfMixEDK0Z8ZCUv2M7SkBLykH56T++Xs+8ln9zTGbOvNGIe02/jw==}
     dependencies:
       '@sinonjs/commons': 1.8.3
+
+  /@suid/base/0.3.0_solid-js@1.5.4:
+    resolution: {integrity: sha512-Z5FdcXYC3ad8NFUbb+btLTX9o1Z0/11OGWVoddiAQU+cAzX2K111Hbu9ZIK5pga58VMIwuMJpqSQnlwO4ZVDOA==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@popperjs/core': 2.11.6
+      '@suid/css': 0.1.5_solid-js@1.5.4
+      '@suid/system': 0.5.0_solid-js@1.5.4
+      '@suid/types': 0.2.0_solid-js@1.5.4
+      '@suid/utils': 0.4.0_solid-js@1.5.4
+      clsx: 1.2.1
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/css/0.1.5_solid-js@1.5.4:
+    resolution: {integrity: sha512-JS+LjGPSbdsJY4nLCFLYXDfA5ynJUoyH4FzVA20LIIUflQg+ebzDjRzsrUnNoct3xZk5487aFe5+a93i8WmN5w==}
+    dependencies:
+      '@suid/utils': 0.4.0_solid-js@1.5.4
+    transitivePeerDependencies:
+      - solid-js
+    dev: false
+
+  /@suid/material/0.6.1_solid-js@1.5.4:
+    resolution: {integrity: sha512-1DqKlr0Le1s5lcj5V71eddH8Vn3NRMjVrUdpBhR0r2Fwu8Xq7VvJqHT1sXM9g0EOYGHJKw3KV9DmArXB8eHFng==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@suid/base': 0.3.0_solid-js@1.5.4
+      '@suid/css': 0.1.5_solid-js@1.5.4
+      '@suid/system': 0.5.0_solid-js@1.5.4
+      '@suid/types': 0.2.0_solid-js@1.5.4
+      '@suid/utils': 0.4.0_solid-js@1.5.4
+      clsx: 1.2.1
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/styled-engine/0.2.0_solid-js@1.5.4:
+    resolution: {integrity: sha512-ZmMdVD3ZVZdt273lLs4B/jfLURrrLEpl0mgcTGc17yg2HVrrvs9oxLbvcNzrTQazVVn4ZaJBT1OaUaFhqfqodg==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@suid/css': 0.1.5_solid-js@1.5.4
+      '@suid/utils': 0.4.0_solid-js@1.5.4
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/system/0.5.0_solid-js@1.5.4:
+    resolution: {integrity: sha512-HSPHg0b59V801SAymdGoeKJgZHSIuAh1NBofzaSSCt8rAUALPsWgRHTZKJD0Qq5PTWvWPseG7KN9IhBmY41azA==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@suid/css': 0.1.5_solid-js@1.5.4
+      '@suid/styled-engine': 0.2.0_solid-js@1.5.4
+      '@suid/types': 0.2.0_solid-js@1.5.4
+      '@suid/utils': 0.4.0_solid-js@1.5.4
+      clsx: 1.2.1
+      csstype: 3.1.0
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/types/0.2.0_solid-js@1.5.4:
+    resolution: {integrity: sha512-96+O5iCKWE13eM9e9BedxdfxdfR5ujjgnMHeDTk5lbqiq0pbKW32VNxU5Zy4UaEHBNkmLC+Pw1Uir8gBPujdMA==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      solid-js: 1.5.4
+    dev: false
+
+  /@suid/utils/0.4.0_solid-js@1.5.4:
+    resolution: {integrity: sha512-7z9pTKWhGQ4lycRfba1gHKbErB1pwWqxZzhYvAyVSiDL4/lxL724BILGaYZ+vyRroHsGeWZlZ+9DC6HD/MHZNw==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      '@suid/types': 0.2.0_solid-js@1.5.4
+      solid-js: 1.5.4
+    dev: false
 
   /@testing-library/dom/7.31.2:
     resolution: {integrity: sha512-3UqjCpey6HiTZT92vODYLPxTBWlM8ZOOjr3LX5F37/VRipW2M1kX6I/Cm4VXzteZqfGfagg8yXywpcOgQBlNsQ==}
@@ -5553,6 +5636,11 @@ packages:
   /clone/1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /co/4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
