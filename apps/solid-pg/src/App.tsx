@@ -1,7 +1,7 @@
-import { Checklist } from '@ngconf/solid-checklist';
+import { ChecklistSwitcher } from '@ngconf/solid-checklist';
 
 function App() {
-  return <Checklist id={'1'}></Checklist>;
+  return <ChecklistSwitcher />;
 }
 
 export default App;
