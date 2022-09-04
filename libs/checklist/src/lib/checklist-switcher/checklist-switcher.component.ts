@@ -1,5 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { RxState } from '@rx-angular/state';
 import { of, Subject } from 'rxjs';
 import { map, mergeMap, withLatestFrom } from 'rxjs/operators';
@@ -8,12 +9,21 @@ import { ChecklistComponent } from '../checklist/checklist.component';
 @Component({
   selector: 'ngconf-checklist-switcher',
   standalone: true,
-  imports: [AsyncPipe, ChecklistComponent],
+  imports: [AsyncPipe, MatButtonModule, ChecklistComponent],
   providers: [RxState],
   template: `
     <ngconf-checklist [id]="(counter$ | async) || '1'"></ngconf-checklist>
-    <button (click)="changeCounter$.next(-1)">Previous</button>
-    <button (click)="changeCounter$.next(1)">Next</button>
+    <button
+      style="margin-right: 0.5rem;"
+      mat-flat-button
+      color="accent"
+      (click)="changeCounter$.next(-1)"
+    >
+      Previous
+    </button>
+    <button mat-flat-button color="primary" (click)="changeCounter$.next(1)">
+      Next
+    </button>
   `,
   styleUrls: ['./checklist-switcher.component.scss'],
 })

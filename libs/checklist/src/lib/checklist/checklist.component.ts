@@ -1,32 +1,41 @@
 import { AsyncPipe, NgForOf } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { RxState } from '@rx-angular/state';
 import { Subject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Checklist } from '../checklist';
 import { TodoService } from '../todo.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'ngconf-checklist',
   standalone: true,
-  imports: [AsyncPipe, NgForOf],
+  imports: [AsyncPipe, NgForOf, MatCardModule, MatToolbarModule],
   providers: [RxState],
   template: `
     <section class="checklist">
-      <h1>
-        <span>{{ name$ | async }}</span>
-      </h1>
-      <div>
-        <article class="task" *ngFor="let task of tasks$ | async">
-          <h2>{{ task.name }}</h2>
-          <button class="answer-button" (click)="completeTask$.next(task.id)">
-            Done
-          </button>
-        </article>
+      <mat-toolbar>{{ name$ | async }}</mat-toolbar>
+      <div style="padding: 1rem;">
+        <mat-card
+          style="margin-bottom: 1rem;"
+          *ngFor="let task of tasks$ | async"
+        >
+          <mat-card-title>{{ task.name }}</mat-card-title>
+          <mat-card-actions>
+            <button
+              mat-button
+              color="warn"
+              (click)="completeTask$.next(task.id)"
+            >
+              Done
+            </button>
+          </mat-card-actions>
+        </mat-card>
       </div>
     </section>
   `,
-  styleUrls: ['./checklist.component.css'],
+  styleUrls: ['./checklist.component.scss'],
 })
 export class ChecklistComponent {
   @Input() set id(id: string) {
