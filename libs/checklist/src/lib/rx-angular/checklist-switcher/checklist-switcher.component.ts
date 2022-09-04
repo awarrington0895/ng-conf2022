@@ -4,15 +4,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { RxState } from '@rx-angular/state';
 import { of, Subject } from 'rxjs';
 import { map, mergeMap, withLatestFrom } from 'rxjs/operators';
-import { ChecklistComponent } from '../checklist/checklist.component';
+import { RxChecklistComponent } from '../checklist/checklist.component';
 
 @Component({
-  selector: 'ngconf-checklist-switcher',
+  selector: 'ngconf-rx-checklist-switcher',
   standalone: true,
-  imports: [AsyncPipe, MatButtonModule, ChecklistComponent],
+  imports: [AsyncPipe, MatButtonModule, RxChecklistComponent],
   providers: [RxState],
   template: `
-    <ngconf-checklist [id]="(counter$ | async) || '1'"></ngconf-checklist>
+    <ngconf-rx-checklist [id]="(counter$ | async) || '1'"></ngconf-rx-checklist>
     <button
       style="margin-right: 0.5rem;"
       mat-flat-button
@@ -27,7 +27,7 @@ import { ChecklistComponent } from '../checklist/checklist.component';
   `,
   styleUrls: ['./checklist-switcher.component.scss'],
 })
-export class ChecklistSwitcherComponent {
+export class RxChecklistSwitcherComponent {
   // READS
   counter$ = this.state.select(
     map((state) => state.counter),

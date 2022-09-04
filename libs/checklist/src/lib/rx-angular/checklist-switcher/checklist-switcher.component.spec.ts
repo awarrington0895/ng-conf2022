@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChecklistSwitcherComponent } from './checklist-switcher.component';
+import { RxChecklistSwitcherComponent } from './checklist-switcher.component';
 
 describe('ChecklistSwitcherComponent', () => {
-  let component: ChecklistSwitcherComponent;
-  let fixture: ComponentFixture<ChecklistSwitcherComponent>;
+  let component: RxChecklistSwitcherComponent;
+  let fixture: ComponentFixture<RxChecklistSwitcherComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChecklistSwitcherComponent],
+      imports: [RxChecklistSwitcherComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ChecklistSwitcherComponent);
+    fixture = TestBed.createComponent(RxChecklistSwitcherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

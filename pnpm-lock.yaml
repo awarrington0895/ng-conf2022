@@ -18,6 +18,7 @@ specifiers:
   '@angular/platform-browser': ~14.2.0
   '@angular/platform-browser-dynamic': ~14.2.0
   '@angular/router': ~14.2.0
+  '@ngrx/component-store': ^14.3.0
   '@nrwl/angular': ^14.6.4
   '@nrwl/cli': 14.6.4
   '@nrwl/eslint-plugin-nx': 14.6.4
@@ -57,6 +58,7 @@ dependencies:
   '@angular/platform-browser': 14.2.0_afytwol7hs4qio34buyx2grhfa
   '@angular/platform-browser-dynamic': 14.2.0_owch6soaoexeadly32xw5vendq
   '@angular/router': 14.2.0_6lk4yxyxfaqzosenawf2bqx6vy
+  '@ngrx/component-store': 14.3.0_ulhd65egriw6odwvy6kqq5spge
   '@rx-angular/state': 1.6.1_5fg2gf3rwg7i2f7lxiduteicpi
   rxjs: 7.5.6
   tslib: 2.4.0
@@ -3308,6 +3310,17 @@ packages:
   /@leichtgewicht/ip-codec/2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: true
+
+  /@ngrx/component-store/14.3.0_ulhd65egriw6odwvy6kqq5spge:
+    resolution: {integrity: sha512-iD/gfgun+nnTWt7QmsBl28QQxwEWEKl7VGfAhFDvmO5x+kIr4k07U+8DColloVqrPUsR1GeaxLX4eb70mKm38w==}
+    peerDependencies:
+      '@angular/core': ^14.0.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 14.2.0_rxjs@7.5.6+zone.js@0.11.8
+      rxjs: 7.5.6
+      tslib: 2.4.0
+    dev: false
 
   /@ngtools/webpack/14.2.1_qp2xj33uqdnsippjhudswfddae:
     resolution: {integrity: sha512-9tsfx2ZQscnpszVkdoJIIxZZDwitgmbPNrsQmyfHhwqPeJ8UUnAk6RNTfHjtX31VCmIM+qdGJsX7vDR9ye3/uA==}

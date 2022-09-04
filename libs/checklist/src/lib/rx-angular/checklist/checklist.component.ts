@@ -4,12 +4,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RxState } from '@rx-angular/state';
 import { Subject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { Checklist } from '../checklist';
-import { ChecklistItemComponent } from '../checklist-item.component';
-import { TodoService } from '../todo.service';
+import { Checklist } from '../../checklist';
+import { TodoService } from '../../todo.service';
+import { ChecklistItemComponent } from '../../checklist-item.component';
 
 @Component({
-  selector: 'ngconf-checklist',
+  selector: 'ngconf-rx-checklist',
   standalone: true,
   imports: [AsyncPipe, NgForOf, MatToolbarModule, ChecklistItemComponent],
   providers: [RxState],
@@ -27,7 +27,7 @@ import { TodoService } from '../todo.service';
   `,
   styleUrls: ['./checklist.component.scss'],
 })
-export class ChecklistComponent {
+export class RxChecklistComponent {
   @Input() set id(id: string) {
     this.init$.next(id);
   }

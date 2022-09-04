@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChecklistComponent } from './checklist.component';
+import { NgRxChecklistComponent } from './checklist.component';
 
 describe('ChecklistComponent', () => {
-  let component: ChecklistComponent;
-  let fixture: ComponentFixture<ChecklistComponent>;
+  let component: NgRxChecklistComponent;
+  let fixture: ComponentFixture<NgRxChecklistComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChecklistComponent],
+      imports: [NgRxChecklistComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ChecklistComponent);
+    fixture = TestBed.createComponent(NgRxChecklistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

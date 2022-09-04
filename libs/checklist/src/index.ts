@@ -1,2 +1,3 @@
-export * from './lib/checklist/checklist.component';
-export * from './lib/checklist-switcher/checklist-switcher.component';
+export * from './lib/component-store/checklist-switcher/checklist-switcher.component';
+export * from './lib/rx-angular/checklist-switcher/checklist-switcher.component';
+export * from './lib/rx-angular/checklist/checklist.component';
