@@ -48,6 +48,7 @@ export class RxChecklistComponent {
 
   constructor(private state: RxState<Checklist>, private api: TodoService) {
     this.state.connect(this.initHandler$);
+    
     this.state.connect('tasks', this.completeTaskHandler$, (state, id) =>
       state.tasks.filter((t) => t.id !== id)
     );
