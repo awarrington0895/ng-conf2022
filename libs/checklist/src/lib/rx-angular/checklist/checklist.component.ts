@@ -5,8 +5,8 @@ import { RxState } from '@rx-angular/state';
 import { Subject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Checklist } from '../../checklist';
-import { TodoService } from '../../todo.service';
 import { ChecklistItemComponent } from '../../checklist-item.component';
+import { TodoService } from '../../todo.service';
 
 @Component({
   selector: 'ngconf-rx-checklist',
@@ -33,22 +33,26 @@ export class RxChecklistComponent {
   }
 
   // READS
-  name$ = this.state.select('name');
-  tasks$ = this.state.select('tasks');
+  readonly name$ = this.state.select('name');
+  readonly tasks$ = this.state.select('tasks');
 
   // EVENTS
-  init$ = new Subject<string>();
-  completeTask$ = new Subject<string>();
+  readonly completeTask$ = new Subject<string>();
+
+  private readonly init$ = new Subject<string>();
 
   // HANDLERS
-  initHandler$ = this.init$.pipe(switchMap((id) => this.api.get(id)));
-  completeTaskHandler$ = this.completeTask$.pipe(
+  private readonly initHandler$ = this.init$.pipe(
+    switchMap((id) => this.api.get(id))
+  );
+
+  private readonly completeTaskHandler$ = this.completeTask$.pipe(
     switchMap((id) => this.api.completeTask(id).pipe(map(() => id)))
   );
 
   constructor(private state: RxState<Checklist>, private api: TodoService) {
     this.state.connect(this.initHandler$);
-    
+
     this.state.connect('tasks', this.completeTaskHandler$, (state, id) =>
       state.tasks.filter((t) => t.id !== id)
     );

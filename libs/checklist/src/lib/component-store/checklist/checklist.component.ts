@@ -33,11 +33,11 @@ export class NgRxChecklistComponent {
   }
 
   // READS
-  name$ = this.store.select((s) => s.name);
-  tasks$ = this.store.select((s) => s.tasks);
+  readonly name$ = this.store.select((s) => s.name);
+  readonly tasks$ = this.store.select((s) => s.tasks);
 
   // EFFECTS
-  readonly init$ = this.store.effect((id$: Observable<string>) =>
+  private readonly init$ = this.store.effect((id$: Observable<string>) =>
     id$.pipe(
       switchMap((id) => this.api.get(id)),
       tap((result) => this.store.setState(result))
