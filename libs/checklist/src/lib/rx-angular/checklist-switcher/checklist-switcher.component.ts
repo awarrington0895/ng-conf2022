@@ -29,16 +29,15 @@ import { RxChecklistComponent } from '../checklist/checklist.component';
 })
 export class RxChecklistSwitcherComponent {
   // READS
-  counter$ = this.state.select(
-    map((state) => state.counter),
-    map((counter: number) => counter.toString())
+  readonly counter$ = this.state.select(
+    map((state) => state.counter.toString())
   );
 
   // EVENTS
-  changeCounter$ = new Subject<number>();
+  readonly changeCounter$ = new Subject<number>();
 
   // HANDLERS
-  changeCounterHandler$ = this.changeCounter$.pipe(
+  private readonly changeCounterHandler$ = this.changeCounter$.pipe(
     withLatestFrom(this.state.select('counter')),
     mergeMap(([amount, currentCounter]) =>
       of({ counter: currentCounter + amount })
