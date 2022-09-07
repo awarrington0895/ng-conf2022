@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { HeroesComponent } from './heroes/heroes.component';
 import { MessagesComponent } from './messages/messages.component';
 
 @Component({
   standalone: true,
-  imports: [HeroesComponent, MessagesComponent],
+  imports: [HeroesComponent, MessagesComponent, RouterModule],
   selector: 'toh-root',
   template: `
     <h1>{{ title }}</h1>
-    <toh-heroes></toh-heroes>
+    <nav>
+      <a routerLink="/heroes">Heroes</a>
+    </nav>
+    <router-outlet></router-outlet>
     <toh-messages></toh-messages>
   `,
   styleUrls: ['./app.component.scss'],
