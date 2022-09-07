@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
+import { HeroesComponent } from './heroes/heroes.component';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [HeroesComponent],
   selector: 'ngconf-root',
-  template: ``,
+  template: `
+    <h1>{{ title }}</h1>
+    <toh-heroes></toh-heroes>
+  `,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'tour-of-heroes';
+  title = 'Tour of Heroes';
 }
