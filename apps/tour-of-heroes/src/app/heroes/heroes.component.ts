@@ -1,13 +1,14 @@
-import { NgForOf, NgIf, UpperCasePipe } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Hero } from '../hero';
+import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HEROES } from '../mock-heroes';
 
 @Component({
-  standalone: true,
-  imports: [UpperCasePipe, FormsModule, NgForOf, NgIf],
   selector: 'toh-heroes',
+  standalone: true,
+  styleUrls: ['./heroes.component.css'],
+  imports: [NgForOf, NgIf, HeroDetailComponent],
   template: `
     <h2>My Heroes</h2>
     <ul class="heroes">
@@ -23,20 +24,8 @@ import { HEROES } from '../mock-heroes';
       </li>
     </ul>
 
-    <div *ngIf="selectedHero">
-      <h2>{{ selectedHero.name | uppercase }} Details</h2>
-      <div>id: {{ selectedHero.id }}</div>
-      <div>
-        <label for="hero-name">Hero name: </label>
-        <input
-          id="hero-name"
-          [(ngModel)]="selectedHero.name"
-          placeholder="name"
-        />
-      </div>
-    </div>
+    <toh-hero-detail [hero]="selectedHero"></toh-hero-detail>
   `,
-  styleUrls: ['./heroes.component.css'],
 })
 export class HeroesComponent {
   heroes = HEROES;
