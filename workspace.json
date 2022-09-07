@@ -5,6 +5,7 @@
     "checklist": "libs/checklist",
     "ng-playground": "apps/ng-playground",
     "solid-checklist": "libs/solid-checklist",
-    "solid-pg": "apps/solid-pg"
+    "solid-pg": "apps/solid-pg",
+    "tour-of-heroes": "apps/tour-of-heroes"
   }
 }
