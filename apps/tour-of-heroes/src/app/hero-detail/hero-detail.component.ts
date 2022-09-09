@@ -20,6 +20,7 @@ import { HeroService } from '../hero.service';
       </div>
     </div>
     <button type="button" (click)="goBack()">go back</button>
+    <button type="button" (click)="save()">save</button>
   `,
 })
 export class HeroDetailComponent implements OnInit {
@@ -43,5 +44,11 @@ export class HeroDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
+    }
   }
 }
