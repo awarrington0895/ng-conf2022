@@ -12,6 +12,18 @@ import { HeroService } from '../hero.service';
   imports: [NgForOf, NgIf, HeroDetailComponent, RouterModule],
   template: `
     <h2>My Heroes</h2>
+    <div>
+      <label for="new-hero">Hero name: </label>
+      <input id="new-hero" #heroName />
+
+      <button
+        type="button"
+        class="add-button"
+        (click)="add(heroName.value); heroName.value = ''"
+      >
+        Add hero
+      </button>
+    </div>
     <ul class="heroes">
       <li *ngFor="let hero of heroes">
         <a routerLink="/detail/{{ hero.id }}">
@@ -32,5 +44,17 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
+  }
+
+  add(name: string): void {
+    name = name.trim();
+
+    if (!name) {
+      return;
+    }
+
+    this.heroService.addHero({ name } as Hero).subscribe((hero) => {
+      this.heroes.push(hero);
+    });
   }
 }
