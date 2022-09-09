@@ -1,15 +1,15 @@
 import { NgForOf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Hero } from '../hero';
+import { HeroSearchComponent } from '../hero-search/hero-search.component';
 import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'toh-dashboard',
   standalone: true,
   styleUrls: ['./dashboard.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgForOf, RouterModule],
+  imports: [NgForOf, RouterModule, HeroSearchComponent],
   template: `
     <h2>Top Heroes</h2>
     <div class="heroes-menu">
@@ -17,6 +17,8 @@ import { HeroService } from '../hero.service';
         {{ hero.name }}
       </a>
     </div>
+
+    <toh-hero-search></toh-hero-search>
   `,
 })
 export class DashboardComponent implements OnInit {
