@@ -1,7 +1,9 @@
-import { NgIf, UpperCasePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Location, NgIf, UpperCasePipe } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'toh-hero-detail',
@@ -17,8 +19,29 @@ import { Hero } from '../hero';
         <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
       </div>
     </div>
+    <button type="button" (click)="goBack()">go back</button>
   `,
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit {
   @Input() hero?: Hero;
+
+  constructor(
+    private route: ActivatedRoute,
+    private heroService: HeroService,
+    private location: Location
+  ) {}
+
+  ngOnInit(): void {
+    this.getHero();
+  }
+
+  getHero(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }
