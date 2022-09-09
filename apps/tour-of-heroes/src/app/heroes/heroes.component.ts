@@ -29,6 +29,14 @@ import { HeroService } from '../hero.service';
         <a routerLink="/detail/{{ hero.id }}">
           <span class="badge">{{ hero.id }}</span> {{ hero.name }}
         </a>
+        <button
+          type="button"
+          class="delete"
+          title="delete hero"
+          (click)="delete(hero)"
+        >
+          x
+        </button>
       </li>
     </ul>
   `,
@@ -56,5 +64,10 @@ export class HeroesComponent implements OnInit {
     this.heroService.addHero({ name } as Hero).subscribe((hero) => {
       this.heroes.push(hero);
     });
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter((h) => h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
   }
 }
