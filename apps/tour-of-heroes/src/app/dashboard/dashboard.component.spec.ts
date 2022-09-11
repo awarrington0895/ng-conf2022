@@ -1,22 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MockBuilder, MockRender } from 'ng-mocks';
+import { of } from 'rxjs';
+import { HeroService } from '../hero.service';
 import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [DashboardComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(DashboardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() =>
+    MockBuilder(DashboardComponent).mock(HeroService, {
+      getHeroes: () => of([]),
+    })
+  );
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(DashboardComponent)).toBeTruthy();
   });
 });
