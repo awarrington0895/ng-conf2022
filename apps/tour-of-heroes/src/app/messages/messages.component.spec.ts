@@ -1,22 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockBuilder, MockRender } from 'ng-mocks';
+import { MessageService } from '../message.service';
 
 import { MessagesComponent } from './messages.component';
 
 describe('MessagesComponent', () => {
-  let component: MessagesComponent;
-  let fixture: ComponentFixture<MessagesComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MessagesComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(MessagesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() =>
+    MockBuilder(MessagesComponent).mock(MessageService, { messages: [] })
+  );
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(MockRender(MessagesComponent)).toBeTruthy();
   });
 });

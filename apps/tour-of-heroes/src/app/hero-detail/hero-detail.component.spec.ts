@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -10,28 +9,29 @@ import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { HeroDetailComponent } from './hero-detail.component';
 
+const mockActivatedRoute = {
+  snapshot: {
+    paramMap: convertToParamMap({ id: 1 }),
+  } as ActivatedRouteSnapshot,
+};
+
 const mockHero: Hero = {
   id: 1,
   name: 'Mock',
 };
 
-const mockActivatedRoute = {
-  snapshot: {
-    paramMap: convertToParamMap({ id: '1' }),
-  } as ActivatedRouteSnapshot,
+const mockHeroService = {
+  getHero: () => of(mockHero),
 };
 
 describe('HeroDetailComponent', () => {
   beforeEach(() =>
     MockBuilder(HeroDetailComponent)
       .mock(ActivatedRoute, mockActivatedRoute)
-      .mock(HeroService, { getHero: () => of(mockHero) })
-      .mock(Location)
+      .mock(HeroService, mockHeroService)
   );
 
   it('should create', () => {
-    const fixture = MockRender(HeroDetailComponent);
-
-    expect(fixture).toBeTruthy();
+    expect(MockRender(HeroDetailComponent)).toBeTruthy();
   });
 });
