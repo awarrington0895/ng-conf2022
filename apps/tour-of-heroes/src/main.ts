@@ -5,8 +5,9 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { HeroEffects } from './app/+state/hero.effects';
-import { heroesReducer } from './app/+state/hero.reducer';
+import { HeroEffects } from './app/+state/heroes/hero.effects';
+import { heroesReducer } from './app/+state/heroes/hero.reducer';
+import { messagesReducer } from './app/+state/messages/messages.reducer';
 import { AppComponent } from './app/app.component';
 import { InMemoryDataService } from './app/in-memory-data.service';
 import { routes } from './app/routes';
@@ -24,7 +25,7 @@ bootstrapApplication(AppComponent, {
       HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
         dataEncapsulation: false,
       }),
-      StoreModule.forRoot({ heroes: heroesReducer }),
+      StoreModule.forRoot({ heroes: heroesReducer, messages: messagesReducer }),
       EffectsModule.forRoot([HeroEffects])
     ),
   ],

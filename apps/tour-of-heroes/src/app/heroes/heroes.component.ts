@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../+state/app.state';
-import { HeroActions } from '../+state/hero.actions';
+import { HeroActions } from '../+state/heroes/hero.actions';
 import { Hero } from '../hero';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 

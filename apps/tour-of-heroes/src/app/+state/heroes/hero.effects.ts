@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../../hero';
+import { HeroService } from '../../hero.service';
 import { HeroActions } from './hero.actions';
 
 @Injectable()

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../+state/app.state';
-import { selectTopFive } from '../+state/hero.selectors';
+import { selectTopFive } from '../+state/heroes/hero.selectors';
 import { HeroSearchComponent } from '../hero-search/hero-search.component';
 
 @Component({
