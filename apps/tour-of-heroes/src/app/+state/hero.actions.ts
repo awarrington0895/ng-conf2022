@@ -6,7 +6,9 @@ export const HeroActions = createActionGroup({
   events: {
     Load: emptyProps(),
     Retrieved: props<{ heroes: Hero[] }>(),
+    Remove: props<{ id: number }>(),
     Removed: props<{ id: number }>(),
+    Add: props<{ name: string }>(),
     Added: props<{ hero: Hero }>(),
     Updated: props<{ hero: Hero }>(),
   },
