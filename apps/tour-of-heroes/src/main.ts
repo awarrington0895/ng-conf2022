@@ -2,7 +2,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { heroesReducer } from './app/+state/hero.reducer';
 import { AppComponent } from './app/app.component';
 import { InMemoryDataService } from './app/in-memory-data.service';
 import { routes } from './app/routes';
@@ -19,7 +21,8 @@ bootstrapApplication(AppComponent, {
       RouterModule.forRoot(routes),
       HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
         dataEncapsulation: false,
-      })
+      }),
+      StoreModule.forRoot({ heroes: heroesReducer })
     ),
   ],
 }).catch((err) => console.error(err));

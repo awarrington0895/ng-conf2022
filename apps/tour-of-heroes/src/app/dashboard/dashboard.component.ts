@@ -1,6 +1,8 @@
-import { NgForOf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AsyncPipe, NgForOf } from '@angular/common';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ComponentStore, tapResponse } from '@ngrx/component-store';
+import { pipe, switchMap } from 'rxjs';
 import { Hero } from '../hero';
 import { HeroSearchComponent } from '../hero-search/hero-search.component';
 import { HeroService } from '../hero.service';
@@ -9,11 +11,15 @@ import { HeroService } from '../hero.service';
   selector: 'toh-dashboard',
   standalone: true,
   styleUrls: ['./dashboard.component.scss'],
-  imports: [NgForOf, RouterModule, HeroSearchComponent],
+  imports: [NgForOf, AsyncPipe, RouterModule, HeroSearchComponent],
+  providers: [ComponentStore],
   template: `
     <h2>Top Heroes</h2>
     <div class="heroes-menu">
-      <a *ngFor="let hero of heroes" routerLink="/detail/{{ hero.id }}">
+      <a
+        *ngFor="let hero of heroes$ | async"
+        routerLink="/detail/{{ hero.id }}"
+      >
         {{ hero.name }}
       </a>
     </div>
@@ -21,18 +27,27 @@ import { HeroService } from '../hero.service';
     <toh-hero-search></toh-hero-search>
   `,
 })
-export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+export class DashboardComponent {
+  // READ
+  readonly heroes$ = this.store.select((s) => s.heroes.slice(1, 5));
 
-  constructor(private heroService: HeroService) {}
+  // EFFECTS
+  readonly getHeroes = this.store.effect<void>(
+    pipe(
+      switchMap(() => this.heroService.getHeroes()),
+      tapResponse(
+        (heroes: Hero[]) => this.store.setState({ heroes }),
+        (err) => console.error(err)
+      )
+    )
+  );
 
-  ngOnInit(): void {
+  constructor(
+    private heroService: HeroService,
+    private store: ComponentStore<{ heroes: Hero[] }>
+  ) {
+    this.store.setState({ heroes: [] });
+
     this.getHeroes();
-  }
-
-  getHeroes(): void {
-    this.heroService
-      .getHeroes()
-      .subscribe((heroes) => (this.heroes = heroes.slice(1, 5)));
   }
 }
