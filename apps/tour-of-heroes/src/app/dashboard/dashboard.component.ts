@@ -1,5 +1,5 @@
 import { AsyncPipe, NgForOf } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../+state/app.state';
@@ -10,6 +10,7 @@ import { HeroSearchComponent } from '../hero-search/hero-search.component';
   selector: 'toh-dashboard',
   standalone: true,
   styleUrls: ['./dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgForOf, AsyncPipe, RouterModule, HeroSearchComponent],
   template: `
     <h2>Top Heroes</h2>

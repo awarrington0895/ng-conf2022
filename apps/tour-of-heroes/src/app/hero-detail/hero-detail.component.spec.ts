@@ -3,6 +3,7 @@ import {
   ActivatedRouteSnapshot,
   convertToParamMap,
 } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { MockBuilder, MockRender } from 'ng-mocks';
 import { of } from 'rxjs';
 import { Hero } from '../hero';
@@ -29,6 +30,7 @@ describe('HeroDetailComponent', () => {
     MockBuilder(HeroDetailComponent)
       .mock(ActivatedRoute, mockActivatedRoute)
       .mock(HeroService, mockHeroService)
+      .mock(Store)
   );
 
   it('should create', () => {

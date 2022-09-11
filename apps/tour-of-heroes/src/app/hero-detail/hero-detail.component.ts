@@ -2,6 +2,9 @@ import { Location, NgIf, UpperCasePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../+state/app.state';
+import { HeroActions } from '../+state/heroes/hero.actions';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
@@ -29,7 +32,8 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
+    private location: Location,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +52,7 @@ export class HeroDetailComponent implements OnInit {
 
   save(): void {
     if (this.hero) {
-      this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
+      this.store.dispatch(HeroActions.updated({ hero: this.hero }));
     }
   }
 }

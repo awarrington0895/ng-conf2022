@@ -10,6 +10,7 @@ export const HeroActions = createActionGroup({
     Removed: props<{ id: number }>(),
     Add: props<{ name: string }>(),
     Added: props<{ hero: Hero }>(),
+    Update: props<{ hero: Hero }>(),
     Updated: props<{ hero: Hero }>(),
   },
 });

@@ -1,6 +1,7 @@
+import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, tap } from 'rxjs/operators';
 import { Hero } from '../../hero';
 import { HeroService } from '../../hero.service';
 import { HeroActions } from './hero.actions';
@@ -40,5 +41,29 @@ export class HeroEffects {
     )
   );
 
-  constructor(private actions$: Actions, private heroService: HeroService) {}
+  updateHero$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(HeroActions.update),
+      mergeMap(({ hero }) =>
+        this.heroService
+          .updateHero(hero)
+          .pipe(map((hero) => HeroActions.updated(hero)))
+      )
+    )
+  );
+
+  goBack$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(HeroActions.updated),
+        tap(() => this.location.back())
+      ),
+    { dispatch: false }
+  );
+
+  constructor(
+    private actions$: Actions,
+    private heroService: HeroService,
+    private location: Location
+  ) {}
 }
