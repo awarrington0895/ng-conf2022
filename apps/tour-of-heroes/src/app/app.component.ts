@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { HeroActions } from './+state/hero.actions';
 import { HeroesComponent } from './heroes/heroes.component';
 import { MessagesComponent } from './messages/messages.component';
 
@@ -20,4 +22,8 @@ import { MessagesComponent } from './messages/messages.component';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
+
+  constructor(private store: Store) {
+    this.store.dispatch(HeroActions.load());
+  }
 }
