@@ -14,7 +14,7 @@ import { HeroService } from '../hero.service';
     <h2>My Heroes</h2>
     <div>
       <label for="new-hero">Hero name: </label>
-      <input id="new-hero" #heroName />
+      <input style="border: 1px dashed black;" id="new-hero" #heroName />
 
       <button
         type="button"
