@@ -1,7 +1,8 @@
 import { AsyncPipe, NgForOf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { ComponentStore, tapResponse } from '@ngrx/component-store';
+import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
@@ -10,6 +11,7 @@ import { HeroService } from '../hero.service';
   selector: 'toh-hero-search',
   standalone: true,
   imports: [RouterModule, NgForOf, AsyncPipe],
+  providers: [ComponentStore],
   template: `
     <div id="search-component">
       <label for="search-box">Hero Search</label>
@@ -26,22 +28,24 @@ import { HeroService } from '../hero.service';
   `,
   styleUrls: ['./hero-search.component.scss'],
 })
-export class HeroSearchComponent implements OnInit {
-  heroes$!: Observable<Hero[]>;
+export class HeroSearchComponent {
+  readonly heroes$ = this.componentStore.select((s) => s.heroes);
 
-  private searchTerms = new Subject<string>();
+  constructor(
+    private heroService: HeroService,
+    private componentStore: ComponentStore<{ heroes: ReadonlyArray<Hero> }>
+  ) {}
 
-  constructor(private heroService: HeroService) {}
-
-  search(term: string): void {
-    this.searchTerms.next(term);
-  }
-
-  ngOnInit() {
-    this.heroes$ = this.searchTerms.pipe(
+  readonly search = this.componentStore.effect((term$: Observable<string>) =>
+    term$.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.heroService.searchHeroes(term))
-    );
-  }
+      switchMap((term: string) => this.heroService.searchHeroes(term)),
+      tapResponse(
+        (heroes: ReadonlyArray<Hero>) =>
+          this.componentStore.setState({ heroes }),
+        console.error
+      )
+    )
+  );
 }
