@@ -5,9 +5,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/ng-playground",
         "index": "apps/ng-playground/src/index.html",
@@ -23,7 +21,8 @@
           "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
           "apps/ng-playground/src/styles.scss"
         ],
-        "scripts": []
+        "scripts": [],
+        "webWorkerTsConfig": "apps/ng-playground/tsconfig.worker.json"
       },
       "configurations": {
         "production": {
@@ -90,12 +89,11 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/ng-playground"
-      ],
+      "outputs": ["coverage/apps/ng-playground"],
       "options": {
         "jestConfig": "apps/ng-playground/jest.config.ts",
-        "passWithNoTests": true
+        "passWithNoTests": true,
+        "webWorkerTsConfig": "apps/ng-playground/tsconfig.worker.json"
       }
     }
   },

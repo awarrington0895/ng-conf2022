@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   NgRxChecklistSwitcherComponent,
   RxChecklistSwitcherComponent,
@@ -13,6 +13,22 @@ import {
   `,
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ng-playground';
+
+  ngOnInit() {
+    if (typeof Worker !== undefined) {
+      const worker = new Worker(new URL('./sha1.worker', import.meta.url));
+
+      // const worker = new Worker('./sha1.worker');
+
+      worker.onmessage = ({ data }) => {
+        console.log(`page got message: ${data}`);
+      };
+
+      worker.postMessage('hello');
+    } else {
+      console.log('Web workers not supported');
+    }
+  }
 }
