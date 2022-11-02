@@ -3,4 +3,5 @@ import { render } from 'solid-js/web';
 import './index.css';
 import App from './App';
 
-render(App, document.getElementById('root'));
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+render(App, document.getElementById('root')!);

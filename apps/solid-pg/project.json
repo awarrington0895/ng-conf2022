@@ -4,6 +4,12 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "verify": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "tsc --noEmit -p apps/solid-pg/tsconfig.app.json"
+      }
+    },
     "build": {
       "executor": "@nxext/vite:build",
       "outputs": ["{options.outputPath}"],
@@ -11,12 +17,14 @@
         "outputPath": "dist/apps/solid-pg",
         "frameworkConfigFile": "@nxext/solid/plugins/vite"
       },
+      "dependsOn": ["verify"],
       "configurations": {
         "production": {}
       }
     },
     "serve": {
       "executor": "@nxext/vite:dev",
+      "dependsOn": ["verify"],
       "options": {
         "outputPath": "dist/apps/solid-pg",
         "frameworkConfigFile": "@nxext/solid/plugins/vite"
