@@ -1,0 +1,49 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/github-repos/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "verify": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "tsc --noEmit -p apps/github-repos/tsconfig.app.json"
+      }
+    },
+    "build": {
+      "executor": "@nxext/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/github-repos",
+        "frameworkConfigFile": "@nxext/solid/plugins/vite"
+      },
+      "dependsOn": ["verify"],
+      "configurations": {
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nxext/vite:dev",
+      "dependsOn": ["verify"],
+      "options": {
+        "outputPath": "dist/apps/github-repos",
+        "frameworkConfigFile": "@nxext/solid/plugins/vite"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/github-repos/**/*.{ts,spec.ts,tsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/github-repos"],
+      "options": {
+        "jestConfig": "apps/github-repos/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
