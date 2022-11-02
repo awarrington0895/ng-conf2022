@@ -1,12 +1,13 @@
-import { username } from './state';
+import Box from '@suid/material/Box';
+import { state } from './state';
 import UsernameForm from './UsernameForm';
 
 const Home = () => {
   return (
-    <div style={{ 'margin-top': '1rem' }}>
+    <Box sx={{ marginTop: '1rem' }}>
       <UsernameForm />
-      Current username is: {username()}
-    </div>
+      Github repos for {state.username}
+    </Box>
   );
 };
 

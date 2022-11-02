@@ -1,5 +1,18 @@
-import { createSignal } from "solid-js";
+import { createStore } from "solid-js/store";
 
-const [username, setUsername] = createSignal('');
+interface AppState {
+    readonly username: string;
+}
 
-export { username, setUsername };
+const intialState = {
+    username: ''
+};
+
+
+const [state, setState] = createStore<AppState>(intialState);
+
+const setUsername = (username: string) => {
+    setState('username', username);
+}
+
+export { state, setUsername };
