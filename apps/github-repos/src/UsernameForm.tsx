@@ -1,26 +1,46 @@
+import Box from '@suid/material/Box';
 import Button from '@suid/material/Button';
 import Stack from '@suid/material/Stack';
 import TextField from '@suid/material/TextField';
 import { createSignal } from 'solid-js';
+import { setUsername } from './state';
 
 const UsernameForm = () => {
-  const [username, setUsername] = createSignal('');
+  const [currentUsername, setCurrentUsername] = createSignal('');
+
+  const search = () => {
+    console.log('Search initiated...');
+  };
+
+  const updateCurrentUsername = (event: { target: { value: string } }) =>
+    setCurrentUsername(event.target.value);
+
+  const submit = (event: Event) => {
+    event.preventDefault();
+
+    setUsername(currentUsername());
+  };
 
   return (
     <div>
-      <Stack direction="row" spacing={2}>
-        <TextField
-          value={username()}
-          onChange={(_, value) => {
-            setUsername(value);
-          }}
-          label="username"
-          variant="outlined"
-        />
-        <Button variant="contained" color="primary">
-          Fetch
-        </Button>
-      </Stack>
+      <Box onSubmit={submit} component="form">
+        <Stack direction="row" spacing={2}>
+          <TextField
+            value={currentUsername()}
+            onChange={updateCurrentUsername}
+            label="username"
+            variant="outlined"
+          />
+          <Button
+            onClick={search}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Fetch
+          </Button>
+        </Stack>
+      </Box>
     </div>
   );
 };
