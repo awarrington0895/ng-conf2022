@@ -29,6 +29,7 @@ specifiers:
   '@nrwl/workspace': 14.6.4
   '@nxext/solid': ^14.0.2
   '@rx-angular/state': ^1.6.1
+  '@solidjs/router': ^0.5.0
   '@suid/material': ^0.6.1
   '@types/jest': 28.1.1
   '@types/node': 16.11.7
@@ -74,6 +75,7 @@ dependencies:
   '@ngrx/component-store': 14.3.0_ulhd65egriw6odwvy6kqq5spge
   '@nrwl/nx-cloud': 14.7.0
   '@rx-angular/state': 1.6.1_5fg2gf3rwg7i2f7lxiduteicpi
+  '@solidjs/router': 0.5.0_solid-js@1.5.4
   '@suid/material': 0.6.1_solid-js@1.5.4
   angular-in-memory-web-api: 0.14.0_vy5cjmubafx3jtdpdvuptlubui
   rxjs: 7.5.6
@@ -4270,6 +4272,14 @@ packages:
     dependencies:
       '@sinonjs/commons': 1.8.3
     dev: true
+
+  /@solidjs/router/0.5.0_solid-js@1.5.4:
+    resolution: {integrity: sha512-rNR07l21tWWDVmCbaapggB89rEX7jlM2XChpTLqEGEnj46LzVZ8zgvjcF6NNKScByAlLpoQUkVIjB2KHpcMi+w==}
+    peerDependencies:
+      solid-js: ^1.5.3
+    dependencies:
+      solid-js: 1.5.4
+    dev: false
 
   /@suid/base/0.3.0_solid-js@1.5.4:
     resolution: {integrity: sha512-Z5FdcXYC3ad8NFUbb+btLTX9o1Z0/11OGWVoddiAQU+cAzX2K111Hbu9ZIK5pga58VMIwuMJpqSQnlwO4ZVDOA==}

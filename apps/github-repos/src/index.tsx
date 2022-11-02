@@ -1,7 +1,12 @@
+import { Router } from '@solidjs/router';
 import { render } from 'solid-js/web';
 
-import './index.css';
 import App from './App';
+import './index.css';
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-render(App, document.getElementById('root')!);
+render(() => (
+    <Router>
+        <App />
+    </Router>)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    , document.getElementById('root')!);
