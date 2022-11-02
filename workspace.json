@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "checklist": "libs/checklist",
+    "data-access-github-repos": "libs/data-access-github-repos",
     "github-repos": "apps/github-repos",
     "ng-playground": "apps/ng-playground",
     "solid-checklist": "libs/solid-checklist",

@@ -16,6 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@ngconf/checklist": ["libs/checklist/src/index.ts"],
+      "@ngconf/data-access-github-repos": [
+        "libs/data-access-github-repos/src/index.ts"
+      ],
       "@ngconf/solid-checklist": ["libs/solid-checklist/src/index.ts"]
     }
   },
