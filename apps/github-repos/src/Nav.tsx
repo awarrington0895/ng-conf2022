@@ -1,11 +1,12 @@
 import { useNavigate } from '@solidjs/router';
 import Button from '@suid/material/Button';
+import Stack from '@suid/material/Stack';
 
 const Nav = () => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <Stack direction="row" spacing={1}>
       <Button onClick={[navigate, '/']} variant="contained" color="primary">
         Home
       </Button>
@@ -16,7 +17,7 @@ const Nav = () => {
       >
         Saved
       </Button>
-    </>
+    </Stack>
   );
 };
 
