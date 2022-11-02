@@ -1,8 +1,10 @@
 import Box from '@suid/material/Box';
-import { state } from './state';
+import { useStore } from './store-provider';
 import UsernameForm from './UsernameForm';
 
 const Home = () => {
+  const { state } = useStore();
+
   return (
     <Box sx={{ marginTop: '1rem' }}>
       <UsernameForm />

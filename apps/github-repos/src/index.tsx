@@ -3,10 +3,13 @@ import { render } from 'solid-js/web';
 
 import App from './App';
 import './index.css';
+import { StoreProvider } from './store-provider';
 
 render(() => (
     <Router>
-        <App />
+        <StoreProvider>
+            <App />
+        </StoreProvider>
     </Router>)
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     , document.getElementById('root')!);

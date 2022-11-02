@@ -1,16 +1,16 @@
-import { gh } from '@ngconf/data-access-github-repos';
 import { Route, Routes } from '@solidjs/router';
 import Container from '@suid/material/Container';
-import { createEffect, createResource } from 'solid-js';
+import { createEffect } from 'solid-js';
 import Home from './Home';
 import Nav from './Nav';
-import { state } from './state';
+import { useStore } from './store-provider';
 
 const App = () => {
-  const [repos] = createResource(() => state.username, gh.getRepos);
+
+  const { state } = useStore();
 
   createEffect(() => {
-    console.log(repos());
+    console.log(state.repos);
   });
 
   return (

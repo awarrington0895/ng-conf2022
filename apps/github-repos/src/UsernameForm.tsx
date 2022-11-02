@@ -3,18 +3,20 @@ import Button from '@suid/material/Button';
 import Stack from '@suid/material/Stack';
 import TextField from '@suid/material/TextField';
 import { createSignal } from 'solid-js';
-import { setUsername } from './state';
+import { useStore } from './store-provider';
 
 const UsernameForm = () => {
   const [currentUsername, setCurrentUsername] = createSignal('');
 
+  const { actions } = useStore();
+ 
   const updateCurrentUsername = (event: { target: { value: string } }) =>
     setCurrentUsername(event.target.value);
 
   const submit = (event: Event) => {
     event.preventDefault();
 
-    setUsername(currentUsername());
+    actions.usernameUpdated(currentUsername());
   };
 
   return (
