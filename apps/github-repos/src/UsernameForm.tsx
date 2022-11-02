@@ -8,10 +8,6 @@ import { setUsername } from './state';
 const UsernameForm = () => {
   const [currentUsername, setCurrentUsername] = createSignal('');
 
-  const search = () => {
-    console.log('Search initiated...');
-  };
-
   const updateCurrentUsername = (event: { target: { value: string } }) =>
     setCurrentUsername(event.target.value);
 
@@ -31,12 +27,7 @@ const UsernameForm = () => {
             label="username"
             variant="outlined"
           />
-          <Button
-            onClick={search}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
+          <Button type="submit" variant="contained" color="primary">
             Fetch
           </Button>
         </Stack>
