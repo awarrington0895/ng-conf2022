@@ -5,9 +5,8 @@ interface AppState {
 }
 
 const intialState = {
-    username: ''
+    username: '',
 };
-
 
 const [state, setState] = createStore<AppState>(intialState);
 
